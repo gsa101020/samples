@@ -1,0 +1,28 @@
+Rotor
+
+Rotor(String shiftKeyFile, String fixedKeyFile, int shiftIndex)
+	File shiftKeyFileF = new File(shiftKeyFile);
+	File fixedKeyFileF = new File(fixedkeyFile);
+
+	Scanner fileReaderS = new Scanner(shiftKeyFileF);
+	Scanner fileReaderF = new Scanner(fixedKeyFileF);
+
+	int index = 0;
+	this.shiftKey = new int[70]; 
+	this.fixedKey = new int[70];
+	
+	while(fileReaderS.hasNext()) {
+		shiftKey[index] = fileReaderS.nextInt();
+		fixedKey[index] = fileReaderF.nextInt();
+		index++;
+	}//while 
+
+	this.shiftIndex = shiftIndex;
+
+encode(int input)
+	input = shiftKey[(input + shiftIndex) % shfitKey.length];
+	input = fixedKey[input];
+	interations++;
+	incrementShiftIndex();
+
+
